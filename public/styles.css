@@ -1,0 +1,207 @@
+:root {
+    --primary-color: #ec4899;
+    --primary-hover: #db2777;
+    --bg-color: #000000;
+    --card-bg: #111111;
+    --text-color: #ffffff;
+    --text-muted: #999999;
+    --border-color: #333333;
+    --success-color: #22c55e;
+    --error-color: #ef4444;
+    --radius: 12px;
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.5;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 600px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+header h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #ec4899;
+}
+
+header p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 16px;
+    box-shadow: var(--shadow);
+    transition: box-shadow 0.2s;
+}
+
+.input-group:focus-within {
+    box-shadow: 0 0 0 2px var(--primary-color);
+    border-color: transparent;
+}
+
+textarea {
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    border: none;
+    background: transparent;
+    color: var(--text-color);
+    font-size: 1rem;
+    font-family: inherit;
+    resize: none;
+    outline: none;
+    min-height: 200px;
+}
+
+textarea::placeholder {
+    color: var(--text-muted);
+    opacity: 0.7;
+}
+
+.char-count {
+    text-align: right;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 8px;
+}
+
+.primary-btn {
+    width: 100%;
+    padding: 16px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 4px 6px -1px rgba(236, 72, 153, 0.3);
+}
+
+.primary-btn:active {
+    transform: scale(0.98);
+}
+
+.primary-btn:disabled {
+    opacity: 0.7;
+    cursor: note-allowed;
+}
+
+.loader {
+    display: none;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #ffffff;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.status-message {
+    padding: 16px;
+    border-radius: var(--radius);
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    text-align: center;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s;
+}
+
+.status-message.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.status-message.success {
+    border-color: var(--success-color);
+    background-color: rgba(34, 197, 94, 0.15);
+}
+
+.status-message.error {
+    border-color: var(--error-color);
+    background-color: rgba(239, 68, 68, 0.1);
+}
+
+.status-message h3 {
+    font-size: 1rem;
+    margin-bottom: 4px;
+}
+
+.status-message p {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+}
+
+#notionLink {
+    display: inline-block;
+    margin-top: 12px;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+#notionLink:hover {
+    text-decoration: underline;
+}
+
+.hidden {
+    display: none !important;
+}
+
+footer {
+    text-align: center;
+    padding-top: 24px;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+}

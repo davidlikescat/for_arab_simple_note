@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Meeting Scribe</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Simple Note</h1>
+        </header>
+
+        <main>
+            <div class="input-group">
+                <textarea id="meetingInput" placeholder="여기에 회의록이나 메모를 입력하세요..."></textarea>
+                <div class="char-count" id="charCount">0 자</div>
+            </div>
+
+            <button id="processBtn" class="primary-btn">
+                <span class="btn-text">회의록 정리 시작</span>
+                <span class="loader"></span>
+            </button>
+
+            <div id="statusMessage" class="status-message hidden">
+                <h3 id="statusTitle"></h3>
+                <p id="statusDesc"></p>
+                <a id="notionLink" href="#" target="_blank" class="hidden">노션에서 보기 &rarr;</a>
+            </div>
+        </main>
+
+        <footer>
+            <p>Powered by Gemini & Notion</p>
+        </footer>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>

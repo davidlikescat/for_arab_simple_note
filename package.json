@@ -1,0 +1,17 @@
+{
+    "name": "meeting-notes-to-notion",
+    "version": "1.0.0",
+    "description": "Convert meeting notes to Notion using Gemini",
+    "main": "api/process-note.js",
+    "scripts": {
+        "start": "vercel dev"
+    },
+    "dependencies": {
+        "@google/generative-ai": "^0.24.1",
+        "@notionhq/client": "^2.2.14",
+        "dotenv": "^16.3.1"
+    },
+    "devDependencies": {
+        "vercel": "^50.4.0"
+    }
+}
