@@ -1,6 +1,6 @@
 {
     "name": "meeting-notes-to-notion",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Convert meeting notes to Notion using Gemini",
     "main": "api/process-note.js",
     "scripts": {
