@@ -1,4 +1,4 @@
-const { processMeetingNotes } = require('../lib/gemini');
+const { processMeetingNotes } = require('../lib/openai');
 const { createMeetingPage } = require('../lib/notion');
 
 module.exports = async (req, res) => {
@@ -23,8 +23,8 @@ module.exports = async (req, res) => {
     try {
         const { text } = req.body;
 
-        if (!process.env.GEMINI_API_KEY) {
-            throw new Error("GEMINI_API_KEY is missing via process.env");
+        if (!process.env.OPENAI_API_KEY) {
+            throw new Error("OPENAI_API_KEY is missing via process.env");
         }
         if (!process.env.NOTION_API_KEY || !process.env.NOTION_DATABASE_ID) {
             throw new Error("NOTION_API_KEY or NOTION_DATABASE_ID is missing via process.env");
@@ -34,10 +34,10 @@ module.exports = async (req, res) => {
             return res.status(400).json({ error: 'Text content is required' });
         }
 
-        // Step 1: Process with Gemini
-        console.log("Processing with Gemini...");
+        // Step 1: Process with OpenAI
+        console.log("Processing with OpenAI gpt-4o-mini...");
         const meetingData = await processMeetingNotes(text);
-        console.log("Gemini output:", meetingData);
+        console.log("OpenAI output:", meetingData);
 
         // Step 2: Save to Notion
         console.log("Saving to Notion...");
@@ -59,9 +59,9 @@ module.exports = async (req, res) => {
 
         // Determine error source
         let errorSource = 'UNKNOWN';
-        if (error.message.includes('GEMINI')) errorSource = 'GEMINI_CONFIG';
+        if (error.message.includes('OPENAI')) errorSource = 'OPENAI_CONFIG';
         if (error.message.includes('NOTION')) errorSource = 'NOTION_CONFIG';
-        if (error.stack && error.stack.includes('google')) errorSource = 'GEMINI_API';
+        if (error.stack && error.stack.includes('openai')) errorSource = 'OPENAI_API';
         if (error.stack && error.stack.includes('notion')) errorSource = 'NOTION_API';
 
         console.error('Source:', errorSource);

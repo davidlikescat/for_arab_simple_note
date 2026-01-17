@@ -7,9 +7,9 @@
         "start": "vercel dev"
     },
     "dependencies": {
-        "@google/generative-ai": "^0.24.1",
         "@notionhq/client": "^2.2.14",
-        "dotenv": "^16.3.1"
+        "dotenv": "^16.3.1",
+        "openai": "^4.70.0"
     },
     "devDependencies": {
         "vercel": "^50.4.0"
